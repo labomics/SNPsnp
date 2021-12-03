@@ -9,10 +9,9 @@ SNPsnp (SNP saturation number prediction) can predict the saturated SNP number o
 * pandas 
 * numpy
 * sklearn
-* sys
 
 ## Usage
-When you want to predict the saturated SNP number of a strain, you can use this model. The usage of this model is extremely easy. All you need is a file that consisting of normalized sequencing coverage, sequencing depth, abundance, genome length, SNP number and SNP density at the current sequencing depth. Then you can get the predicted SNP saturation number (denormalization is needed) to judge whether your current sequencing depth is suifficent for your research. 
+When you want to predict the saturated SNP number of a strain, you can use this model. The usage of this model is extremely easy. All you need is a file that consisting of sequencing coverage, sequencing depth, abundance, genome length, SNP number and SNP density at the current sequencing depth. Then you can get the predicted SNP saturation number to judge whether your current sequencing depth is suifficent for your research. 
 
 ```
 python useSNPsnp.py [inputfile]
