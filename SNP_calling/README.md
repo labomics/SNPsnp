@@ -16,8 +16,6 @@ According to the research of Altmann et al (A beginners guide to SNP calling fro
 ### Filtration of strains
 Burrows-Wheeler Aligner-maximal exact match (BWA-MEM) was chosen to align clean reads to the constructed microbial reference genome in default settings. Given multiple alignment problem, we retained only the unique matched reads to increase the accuracy of subsequent variant calling. While large quantities of strains and genes exists in gut microbiome, lots of them are with low abundance. To further investigate representative strains and genes, we set relevant filter criteria: Strains with sufficient reads (more than 40% coverage of the reference genome) and enough sequencing depth (more than 10X) in at least 20 samples in the two groups respectively were selected (see details in step5_species_coverage). 
 
-### SNP density
-For prevalent strains with sufficient genome coverage and depth, getSNP_majorFreq.py was used to achieve major SNPs in these strains. getSNPnum.py was used to count SNPs of each prevalent strain in each sample and cal_density.py was used to calculate SNP density based on SNPs and genome coverage of strains. Mann-Whitney test was used to analyze the difference of SNP densitiy between the liver cirrhosis and control group. R package qvalue (v2.10.0) was used to control False Discovery Rate.  (see details in step6_snpdensity).
 
 ## Citation
 
@@ -33,7 +31,7 @@ Yaowen Chen<sup>1</sup> , Zongcheng Li<sup>1</sup> , Shuofeng Hu<sup>1</sup> , J
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
 
 ## Flowchart
-<img src="flowchart.png" width = "300" height = "429" alt="" align=center />
+<img src="flowchart.png" width = "1441" height = "829" alt="" align=center />
 
 ### Usage Examples
 
