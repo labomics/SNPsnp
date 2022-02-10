@@ -1,6 +1,6 @@
 # metagenomic_SNP_calling
 ## Overview
-This framework contains quality control, construction of microbial reference genomes, SNP calling, filtration of strains and SNP density. 
+This framework contains quality control, construction of microbial reference genomes, SNP calling, filtration of strains. 
 
 ### Quality control of reads
 
@@ -31,7 +31,7 @@ Yaowen Chen<sup>1</sup> , Zongcheng Li<sup>1</sup> , Shuofeng Hu<sup>1</sup> , J
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
 
 ## Flowchart
-<img src="flowchart.png" width = "800" height = "600" alt="" align=center />
+<img src="flowchart.png" width = "600" height = "400" alt="" align=center />
 
 ### Usage Examples
 
