@@ -31,7 +31,7 @@ Yaowen Chen<sup>1</sup> , Zongcheng Li<sup>1</sup> , Shuofeng Hu<sup>1</sup> , J
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
 
 ## Flowchart
-<img src="flowchart.png" width = "1441" height = "829" alt="" align=center />
+<img src="flowchart.png" width = "800" height = "600" alt="" align=center />
 
 ### Usage Examples
 
