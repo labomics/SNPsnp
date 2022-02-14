@@ -19,16 +19,6 @@ Burrows-Wheeler Aligner-maximal exact match (BWA-MEM) was chosen to align clean 
 ### Depth filter of strains
 When the sequencing size of samples is not normal, it is difficult to determine a reasonable filter threshold, especially for sequencing depth. In order to avoid the biases by subjectively determining the sequencing depth threshold, we determined the depth filtering threshold of each strain by fitting the distribution of the sequencing depth.
 
-## Citation
-
-### Comprehensive Strain-level Analysis of the Gut Microbe Faecalibacterium Prausnitzii in Patients with Liver Cirrhosis
-
-Yaowen Chen<sup>1*</sup>, Pu Liu<sup>1*</sup>, Runyan Liu<sup>1</sup>, Shuofeng Hu<sup>1</sup>, Zhen He<sup>1</sup>, Guohua Dong<sup>1</sup>, Chao Feng<sup>1</sup>, Sijing An<sup>1</sup>, Xiaomin Ying<sup>1#</sup>
-
-### Gut metagenomes of type 2 diabetic patients have characteristic single-nucleotide polymorphism distribution in Bacteroides coprocola
-
-Yaowen Chen<sup>1</sup> , Zongcheng Li<sup>1</sup> , Shuofeng Hu<sup>1</sup> , Jian Zhang<sup>1</sup> , Jiaqi Wu<sup>1</sup> , Ningsheng Shao<sup>1</sup> , Xiaochen Bo<sup>2</sup> , Ming Ni<sup>2*</sup> and Xiaomin Ying<sup>1*</sup>
-
 ## Pre-requisites
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
 
