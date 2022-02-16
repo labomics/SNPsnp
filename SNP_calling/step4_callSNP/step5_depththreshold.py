@@ -34,8 +34,6 @@ with open("subdepth.txt",'w') as outpf:
                 model = GeneralMixtureModel.from_samples([ExponentialDistribution,NormalDistribution],  n_components=2,X=X)
                 if json.loads(str(model))['weights'][0] == 0:
                     continue
-                if json.loads(str(model))['weights'][0] > 0.9:
-                    continue
                 a = model.distributions
                 explambda = a[0].parameters[0]
                 expth = float(expon.ppf(0.5,scale=1/explambda))
