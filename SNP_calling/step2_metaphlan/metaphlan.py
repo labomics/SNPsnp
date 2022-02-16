@@ -16,8 +16,6 @@ with open(list_file,"r") as inpf:
         line = line.strip()
         if(re.match("#",line)):
             continue
-        sample,type = line.split('\t')
-        line = sample
         file1 = "%s_1P.fq.gz"%line
         file2 = "%s_2P.fq.gz"%line
         print("processing %s..."%line)
