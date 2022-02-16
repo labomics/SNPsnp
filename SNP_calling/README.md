@@ -1,6 +1,6 @@
 # metagenomic_SNP_calling
 ## Overview
-This framework contains quality control, construction of microbial reference genomes, SNP calling, filtration of strains. 
+This framework contains quality control, construction of microbial reference genomes, SNP calling, selection of strains and depth filteration threshold for strains. 
 
 ### Quality control of reads
 
@@ -8,16 +8,16 @@ FastQC (http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) was used to h
 
 ### Construction of microbial reference genome
 
-With a large number of microbial reference genomes already in hand, it would cost vast computing resources and considerable time if we integrate all microbial reference genomes available as our reference genome. Considering long-tail distribution of abundances in microbiome analysis, only strains detected in more than 3 samples were reserved as the final reference genome. MetaPhlAn2 was used to profile the microorganisms and their relative abundances in each sample (see step2/metaphlan.py). The final reference genomes achieved by steps in folder step3_getRef are used in subsequent analysis.
+With a large number of microbial reference genomes already in hand, it would cost vast computing resources and considerable time if we integrate all microbial reference genomes available as our reference genome. Only strains detected in samples were reserved as the final reference genome. MetaPhlAn2 was used to profile the microorganisms (see step2/metaphlan.py). The final reference genomes achieved by steps in folder step3_getRef are used in subsequent analysis.
 
 ### SNP calling 
-According to the research of Altmann et al (A beginners guide to SNP calling from high-throughput DNA-sequencing data. Hum Genet 2012; 131:1541–54.), the SNP calling results using SAMTools have around 85 percent in common with that using GATK. Taking accuracy and run time into account, SAMTools was chosen as one of the softwares calling SNPs. The alignment of duplicates by BWA was first marked and filtered by Picard (http://broadinstitute.github.io/picard/). Then SAMTools was used to call SNPs with parameters ‘- vmO z -V indels’ and the results were filtered by VCFTools with parameters ‘+/d=10/a=4/Q=15/q=10/’. To reduce SNP false positives, VarScan2 was also used to call SNPs with ‘-min-coverage 10 -min-reads2 4 -min-var-freq 0.2 -p-value 0.05’. SNPs detected by both SAMTools and VarScan2 were selected for the next step of analysis as tentative SNPs.(see details in step4_callSNP).
+According to the research of Altmann et al (A beginners guide to SNP calling from high-throughput DNA-sequencing data. Hum Genet 2012; 131:1541–54.), the SNP calling results using SAMTools have around 85 percent in common with that using GATK. Taking accuracy and run time into account, SAMTools was chosen as one of the softwares calling SNPs. The alignment of duplicates by BWA was first marked and filtered by Picard (http://broadinstitute.github.io/picard/). Then SAMTools was used to call SNPs with parameters ‘- vmO z -V indels’ and the results were filtered by VCFTools with parameters ‘+/d=10/a=4/Q=15/q=10/’. VarScan2 is very robust in adjusting thresholds such as coverage and minimum allele frequency, which makes it advantageous for the detection of low-allele-frequency variants in high-depth datasets. To reduce SNP false positives, VarScan2 was also used to call SNPs with ‘-min-coverage 10 -min-reads2 4 -min-var-freq 0.2 -p-value 0.05’. SNPs detected by both SAMTools and VarScan2 were selected for the next step of analysis as tentative SNPs.(see details in step4_callSNP).
 
-### Filtration of strains
+### Selection of strains
 Burrows-Wheeler Aligner-maximal exact match (BWA-MEM) was chosen to align clean reads to the constructed microbial reference genome in default settings. Given multiple alignment problem, we retained only the unique matched reads to increase the accuracy of subsequent variant calling. While large quantities of strains exist in gut microbiome, lots of them are with low abundance. Hence, we chose dominant strains (relative abundance over 1%) for further analysis. 
 
-### Depth filter of strains
-When the sequencing size of samples is not normal, it is difficult to determine a reasonable filter threshold, especially for sequencing depth. In order to avoid the biases by subjectively determining the sequencing depth threshold, we determined the depth filtering threshold of each strain by fitting the distribution of the sequencing depth.
+### Depth filteration threshold for strains
+When the sequencing size of samples is not normal, it is difficult to determine a reasonable filter threshold, especially for sequencing depth. In order to avoid the biases by subjectively determining the sequencing depth filteration threshold, we determined the depth filteration threshold for strains by fitting the base depth distribution of each strain.
 
 ## Pre-requisites
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
@@ -29,7 +29,7 @@ This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, pi
 
 To help better understand how this framework works, we use data in filefolder test to run this framwork. It should be noted that due to the large amount of data in researches and our small test data, the threshold standard is slightly different.
 
-Considering reseaches often includes large samples, we suggest that a file contains sample names and their type is needed, which is list1.txt here.
+Considering reseaches often includes large samples, we suggest that a file contains sample names is needed, which is list1.txt here.
 
 step1_qc performs quality control with a file contains sample name, datadir and outdir needed. The input is raw data and the output is clean data in test/clean_data.
 
