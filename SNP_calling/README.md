@@ -42,7 +42,6 @@ step2_metaphlan profiles the microorganisms and their relative abundances in eac
 step3_getRef constructs microbial reference genome by selecting strains that meet certain conditions. Then you need to download reference genome from NCBI according to GCFid and build index for Reffna. You can see details in test/ref.  
 
     python2 step1_stat.py test/metaphlan2 > species.txt  
-    #select names of strains detected in more than 3 samples as input (speciesname.txt) for subsequent analysis.  
     python2 step2_getStrain.py test/metaphlan2 > mappedstrain.txt   
     python2 step3_getrefid.py > mappedGCF.txt   
     
