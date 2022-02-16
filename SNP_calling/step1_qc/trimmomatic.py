@@ -28,8 +28,6 @@ with open(listfile,"r") as inpf:
         line = line.strip()
 	if re.match('#',line):
             continue
-        file,type = line.split("\t")
-        line = file
         print("start analysis %s..."%line)
         file1 = "%s_1"%line
         file2 = "%s_2"%line
