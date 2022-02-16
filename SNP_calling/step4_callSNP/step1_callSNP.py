@@ -20,7 +20,6 @@ with open(list_file,"r") as inpf:
         line = line.strip()
         if re.match("#",line):
             continue
-        line = line.split("\t")[0]
         file1 = "%s/%s_1P.fq.gz"%(dataPath, line)
         file2 = "%s/%s_2P.fq.gz"%(dataPath, line)
         print("processing %s..."%line)
