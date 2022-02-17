@@ -17,7 +17,7 @@ According to the research of Altmann et al (A beginners guide to SNP calling fro
 Burrows-Wheeler Aligner-maximal exact match (BWA-MEM) was chosen to align clean reads to the constructed microbial reference genome in default settings. Given multiple alignment problem, we retained only the unique matched reads to increase the accuracy of subsequent variant calling. While large quantities of strains exist in gut microbiome, lots of them are with low abundance. Hence, we chose dominant strains (relative abundance over 1%) for further analysis. 
 
 ### Depth filteration threshold for strains
-When the sequencing size of samples is not normal, it is difficult to determine a reasonable filter threshold, especially for sequencing depth. In order to avoid the biases by subjectively determining the sequencing depth filteration threshold, we determined the depth filteration threshold for strains by fitting the base depth distribution of each strain. The depth of bases at each site was calculated by bedtools on the processed bam files with parameters 'bedtools genomecov -d -ibam'.
+When the sequencing size of samples is not normal, it is difficult to determine a reasonable filter threshold, especially for sequencing depth. In order to avoid the biases by subjectively determining the sequencing depth filteration threshold, we determined the depth filteration threshold for strains by fitting the base depth distribution of each strain. 
 
 ## Pre-requisites
 This part requires FastQC, Trimmomatic, MetaPhlAn2.0, bowtie2, bwa, Samtools, picard, bcftools, VarScan2, vcftools installed. 
@@ -52,4 +52,5 @@ step4_callSNP includes calling SNPs by Samtools and VarScan2 respectively and so
     python step3_filtervcf.py 1
     python step4_gen_newvcf.py 1
 
-    
+The depth of bases at each site was calculated by bedtools on the processed bam files with parameters 'bedtools genomecov -d -ibam'. The genomeInfo.txt contains the contigs information of each genome.
+   
